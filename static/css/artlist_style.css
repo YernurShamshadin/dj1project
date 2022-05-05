@@ -1,0 +1,13 @@
+.artist_list{
+	padding: 20px;
+}
+.artist_list .card{
+	margin: 40px;
+}
+.artist_list{
+	display: flex;
+	flex-wrap: wrap;
+}
+.card-img-top{
+	height: 18rem;
+}

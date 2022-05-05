@@ -1,0 +1,37 @@
+
+{% extends 'kz_musics/base.html' %}
+	{% block content %}
+		<div class = b_tabs>
+			<ul class="nav nav-tabs" style="margin-top: 80px; margin-left: 50px;">
+  				<li class="nav-item">
+    				<a class="nav-link active" aria-current="page" href="#">Песни</a>
+  				</li>
+  				<li class="nav-item">
+    				<a class="nav-link" href="/artists/">Артисты</a>
+  				</li>
+			</ul>
+			<div class = content>
+				<div class = songs_list>
+                    {% for song in songs_list %}
+					<div class = mp3>
+						<div class="card" style="margin: 20px 50px 0px 50px;">
+  							<h5 class="card-header artist_name"><a href="
+  								{%for artists in song.artist.all %}
+                                    {{artists.get_absolute_url }}
+                                {% endfor %}">
+                                {%for artists in song.artist.all %}
+                                    {{artists.name}}
+                                {% endfor %}
+                            </a></h5>
+  							<div class="card-body">
+    							<h5 class="card-title song_name"><a href="{{ song.get_absolute_url }}">{{ song.title }}</a></h5>
+    							<a href="#" class="btn btn-primary">Play</a>
+
+  							</div>
+						</div>
+					</div>
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endblock content %}

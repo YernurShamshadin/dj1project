@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SDU</title>
+
+		<!-- CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=1519.2px">
+
+	</head>
+	<body>
+		<header>
+			<div>
+				<nav class="navbar navbar-dark bg-primary fixed-top">
+					 <div class="container-fluid">
+					   <a class="navbar-brand" href="/">Kaz muzic</a>
+					   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+					     <span class="navbar-toggler-icon"></span>
+					   </button>
+					   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: #0D6EFD;">
+					     <div class="offcanvas-header">
+					       <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+					       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					     </div>
+					     <div class="offcanvas-body">
+					       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+					         <li class="nav-item">
+					           <a class="nav-link active" aria-current="page" href="/">Home</a>
+					         </li>
+					         <li class="nav-item">
+					           <a class="nav-link" href="#">Link</a>
+					         </li>
+					       </ul>
+					     </div>
+					   </div>
+					 </div>
+				</nav>
+			</div>
+		</header>
+		<div class = main>
+			<div style="margin: 60px 0px ">
+				<div class="details_list">
+					<ul class="list-group">
+  						<li class="list-group-item">Название: {{ songs.title }}</li>
+  						<li class="list-group-item">Исполнитель:
+							{%for artists in songs.artist.all %}
+								{{artists.name}}
+							{% endfor %}
+						</li>
+  						<li class="list-group-item">Дата выхода: {{ songs.year }}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="lyricblock" style="margin: 2% 40%">
+					<h2>Текст:</h2>
+
+					<div class="text">
+						{% load new_tags %}
+							{% with songs.lyrics|split:"." as lines %}
+								{% for line in lines %}
+    								{{ line }}<br>
+								{% endfor %}
+							{% endwith %}
+						<!-- {{ songs.lyrics }} -->
+					</div>
+			</div>
+		</div>
+
+		<!-- JavaScript Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	</body>
+
+</html>
